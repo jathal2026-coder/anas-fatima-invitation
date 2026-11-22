@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ead8c3"><title>أنس وفاطمة | دعوة الزفاف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="invite-page">
+<header class="topbar"><a href="index.html" aria-label="العودة">‹</a><span>دعوة زفاف</span><small>13 · 12 · 2026</small></header>
+<main class="page">
+  <figure class="artwork">
+    <img src="assets/openedenvo.webp" alt="تصميم دعوة أنس وفاطمة بزخارف الدانتيل والورد واللؤلؤ والظرف والأسطوانة" style="    margin-top: -75px;
+    margin-bottom: -25px;">
+  </figure>
+
+
+    <img class="invitation-image" src="assets/invitation.webp" alt="تصميم دعوة أنس وفاطمة بزخارف الدانتيل والورد واللؤلؤ والظرف والأسطوانة">
+
+
+  <section class="music-section parchment">
+    <div class="record-area">
+      <div class="record" id="record"><div class="record-center"><span>♥</span> </div></div>
+      <button id="playMusic" class="play-button" aria-label="تشغيل الأغنية">▶</button>
+    </div> 
+    <p class="helper">اضغطوا على زر التشغيل للاستماع </p>
+    <div id="youtubePlayer" class="youtube-player" hidden></div>
+  </section>
+
+ 
+<section class="countdown-section">
+  <p class="section-kicker">نعدّ اللحظات حتى نلتقي</p>
+  <h2>العد التنازلي للزفاف</h2>
+
+  <div class="countdown">
+
+    <div class="time-card">
+      <b id="days">--</b>
+      <small>يوم</small>
+    </div>
+
+    <div class="time-card">
+      <b id="hours">--</b>
+      <small>ساعة</small>
+    </div>
+
+    <div class="time-card">
+      <b id="minutes">--</b>
+      <small>دقيقة</small>
+    </div>
+
+    <div class="time-card">
+      <b id="seconds">--</b>
+      <small>ثانية</small>
+    </div>
+
+  </div>
+
+</section>
+
+  <section class="rsvp-section parchment">
+    <h2>تأكيد الحضور</h2>
+    <p class="helper">يرجى تسجيل الاسم واختيار حالة الحضور</p>
+    <form id="rsvpForm">
+      <label for="guestName">الاسم الكامل</label>
+      <input id="guestName" name="name" type="text" placeholder="اكتبوا الاسم الكامل" autocomplete="name" required>
+      <fieldset><legend>تأكيد الحضور</legend>
+        <label class="radio"><input type="radio" name="attendance" value="سأحضر" required><span>سأحضر</span></label>
+        <label class="radio"><input type="radio" name="attendance" value="أعتذر عن الحضور"><span>أعتذر عن الحضور</span></label>
+      </fieldset>
+      <button class="submit" type="submit">إرسال التسجيل</button>
+      <p id="formStatus" class="status" role="status"></p>
+    </form>
+  </section>
+<section class="venue-section">
+  <div class="tiny-ornament">✧ ──────────────── ✧</div>
+  <p class="section-kicker">جنة الأطفال منازلهم</p>
+    <div class="tiny-ornament">✧ ──────────────── ✧</div>
+  </div>
+  </section>
+
+<section class="venue-section">
+  <p class="section-kicker">ننتظركم لنحتفل معاً</p>
+  <h2>مكان لقائنا</h2>
+
+  <div class="venue-card">
+
+    <div class="venue-icon">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M32 56S12 35 12 23a20 20 0 1 1 40 0C52 35 32 56 32 56Z"/>
+        <circle cx="32" cy="23" r="7"/>
+        <path d="M22 48h20"/>
+      </svg>
+    </div>
+
+    <h3>صالة غولدن فينو</h3>
+    <p class="venue-english">Golden Venue</p>
+
+    <div class="venue-divider">
+      ✧ ───── ❦ ───── ✧
+    </div>
+
+    <a
+      href="https://maps.app.goo.gl/zLpwi5FoXKpfQ9C4A"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="venue-button">
+      <span>افتحوا الموقع على الخريطة</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 17 17 7M7 7h10v10"/>
+      </svg>
+    </a>
+
+</section>
+
+
+
+ 
+</main>
+<script src="config.js"></script><script src="app.js"></script>
+</body></html>

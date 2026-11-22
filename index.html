@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ead8c3"><title>دعوة زفاف أنس وفاطمة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="cover-page">
+<main class="cover">
+  <div class="cover-lace top-lace"></div><div class="cover-lace bottom-lace"></div>
+  <div class="cover-flowers flower-left" aria-hidden="true"></div><div class="cover-flowers flower-right" aria-hidden="true"></div>
+  <div class="cover-pearl-line" aria-hidden="true"></div>
+  <p class="eyebrow">بكل الحب ندعوكم</p>
+  <div class="cover-envelope" id="coverEnvelope">
+    <a href="invitation.html">
+    <img src="assets/lace.webp" alt="ظرف دعوة زفاف مزين بالدانتيل واللؤلؤ والورد" class="envelope-art"></a>
+    
+  </div>
+  <p class="open-hint">اضغطوا على ختم الشمع لفتح الدعوة</p>
+  <div class="tiny-ornament">✧ ──────────────── ✧</div>
+  <p class="cover-date">Anas <span>|</span> Fatima</p>
+</main>
+<script>
+document.getElementById('openInvitation').addEventListener('click',()=>{
+  document.getElementById('coverEnvelope').classList.add('opened');
+  setTimeout(()=>location.href='invitation.html',650);
+});
+</script>
+</body></html>
