@@ -38,95 +38,66 @@
 
   const map = document.getElementById("mapLink");
 
-  if (map) {
-    if (cfg.mapsUrl) {
-      map.href = cfg.mapsUrl;
-    } else {
-      map.addEventListener("click", (e) => {
-        e.preventDefault();
-        alert("سنضيف رابط الصالة قبل النشر.");
-      });
-    }
+  if (map && cfg.mapsUrl) {
+    map.href = cfg.mapsUrl;
   }
 
 
   // =================================
-  // YOUTUBE MUSIC
-  // تشغيل عند الضغط على الزر فقط
+  // LOCAL MUSIC PLAYER
   // =================================
 
   const playButton = document.getElementById("playMusic");
-  const player = document.getElementById("youtubePlayer");
+  const audio = document.getElementById("weddingAudio");
   const record = document.getElementById("record");
 
-  if (playButton && player) {
-    let isPlaying = false;
+  if (playButton && audio) {
 
-    playButton.addEventListener("click", () => {
-
-      // إيقاف الأغنية عند الضغط مرة ثانية
-      if (isPlaying) {
-        player.innerHTML = "";
-        isPlaying = false;
-
-        if (record) {
-          record.classList.remove("playing");
-        }
-
-        playButton.textContent = "▶";
-        return;
-      }
-
-      const url = cfg.youtubeUrl || "";
-      let videoId = "";
-
-      // استخراج معرف الأغنية من رابط YouTube
-      try {
-        const normalizedUrl = url.startsWith("http")
-          ? url
-          : "https://" + url;
-
-        const parsedUrl = new URL(normalizedUrl);
-
-        if (parsedUrl.hostname.includes("youtu.be")) {
-          videoId = parsedUrl.pathname.slice(1);
-        } else if (parsedUrl.pathname.includes("/embed/")) {
-          videoId = parsedUrl.pathname.split("/embed/")[1];
-        } else {
-          videoId = parsedUrl.searchParams.get("v") || "";
-        }
-
-        videoId = videoId.split("/")[0].split("?")[0];
-
-      } catch (error) {
-        videoId = "";
-      }
-
-      // التأكد من صحة رابط الأغنية
-      if (!/^[\w-]{11}$/.test(videoId)) {
-        alert("رابط الأغنية غير صحيح. تأكدي من ملف config.js.");
-        return;
-      }
-
-      // تشغيل الأغنية بعد ضغط المستخدم
-      player.hidden = false;
-
-      player.innerHTML = `
-        <iframe
-          src="https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&rel=0&playsinline=1"
-          title="أغنية أنس وفاطمة"
-          allow="autoplay; encrypted-media"
-          referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
-      `;
-
-      isPlaying = true;
-
+    function updatePlayingState(playing) {
       if (record) {
-        record.classList.add("playing");
+        record.classList.toggle("playing", playing);
       }
 
-      playButton.textContent = "Ⅱ";
+      playButton.textContent = playing ? "Ⅱ" : "▶";
+
+      playButton.setAttribute(
+        "aria-label",
+        playing ? "إيقاف الأغنية مؤقتاً" : "تشغيل الأغنية"
+      );
+    }
+
+    playButton.addEventListener("click", async () => {
+
+      if (!audio.paused) {
+        audio.pause();
+        return;
+      }
+
+      try {
+        await audio.play();
+      } catch (error) {
+        console.error("Music playback error:", error);
+        updatePlayingState(false);
+        alert("تعذر تشغيل الأغنية. تأكدي من اتصال الإنترنت وملف الموسيقى.");
+      }
+
+    });
+
+    audio.addEventListener("play", () => {
+      updatePlayingState(true);
+    });
+
+    audio.addEventListener("pause", () => {
+      updatePlayingState(false);
+    });
+
+    audio.addEventListener("ended", () => {
+      updatePlayingState(false);
+    });
+
+    audio.addEventListener("error", () => {
+      updatePlayingState(false);
+      console.error("تعذر تحميل ملف wedding-song.m4a");
     });
   }
 
@@ -221,7 +192,6 @@
 
   } else {
 
-    // إظهار العناصر للأجهزة التي لا تدعم IntersectionObserver
     revealItems.forEach((item) => {
       item.classList.add("is-visible");
     });
